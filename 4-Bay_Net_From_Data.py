@@ -9,9 +9,11 @@ df = pd.read_csv('heart.csv')
 model = BayesianNetwork([('age','target'),('sex','target'),('exang','target'),('cp','target'),('target','restecg'),('target','chol')])
 model.fit(df,estimator=MaximumLikelihoodEstimator)
 infer = VariableElimination(model)
+
 print('\n1. Probability of Heart Disease given evidence = restecg')
 q1 = infer.query(variables = ['target'],evidence={'restecg':1})
 print(q1)
+
 print('\n2. Probability of Heart Disease given evidence = cp')
 q2 = infer.query(variables = ['target'],evidence={'cp':2})
 print(q2)
