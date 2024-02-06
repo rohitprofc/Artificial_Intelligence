@@ -1,16 +1,18 @@
 def dfs(graph, start):
     visited = set()  
     stack = [start]  
+    path = []
 
     while stack:
         node = stack.pop()  
 
         if node not in visited:
             visited.add(node)
-            print(node)  
+            path.append(node)
 
             stack.extend(graph[node] - visited)
 
+    print(path)
     return visited
 
 graph = {"A": {"B","D","E"},
